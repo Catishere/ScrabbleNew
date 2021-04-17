@@ -1,0 +1,31 @@
+.DW {
+    background-color: palevioletred;
+}
+.TW {
+    background-color: red;
+}
+.DL {
+    background-color: lightblue;
+}
+.TL {
+    background-color: darkblue;
+    color: white;
+}
+.NM {
+    background-color: darkgreen;
+}
+
+.tile {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 90%;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+    justify-content: center;
+    border: green;
+    border-style: solid;
+}

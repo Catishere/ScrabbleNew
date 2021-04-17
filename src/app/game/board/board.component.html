@@ -1,0 +1,7 @@
+<mat-grid-list *ngFor="let tilerow of tiles" gutterSize="0px" cols="15" rowHeight="1:1">
+    <div *ngFor="let tile of tilerow">
+        <mat-grid-tile>
+            <app-tile class="tile" [tile]="tile"></app-tile>
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>

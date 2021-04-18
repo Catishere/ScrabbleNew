@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TileComponent } from './tile/tile.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HandComponent } from './hand/hand.component';
 
 
@@ -19,6 +20,7 @@ import { HandComponent } from './hand/hand.component';
   imports: [
     CommonModule,
     MatGridListModule,
+    DragDropModule,
   ],
   exports: [
     BoardComponent,

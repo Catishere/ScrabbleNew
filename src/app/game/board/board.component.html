@@ -1,7 +1,16 @@
-<mat-grid-list *ngFor="let tilerow of tiles" gutterSize="0px" cols="15" rowHeight="1:1">
-    <div *ngFor="let tile of tilerow">
+<div cdkDropList
+    [cdkDropListData]="letters"
+    cdkDropListOrientation="horizontal" 
+    (cdkDropListDropped)="drop($event)"
+    class="hand">
+    <div *ngFor="let letter of letters">
+        <app-letter class="letter" [letter]="letter" cdkDrag></app-letter>
+    </div>
+</div>
+<mat-grid-list *ngFor="let tilerow of tiles; index as i" gutterSize="0px" cols="15" rowHeight="1:1">
+    <div *ngFor="let tile of tilerow; index as j">
         <mat-grid-tile>
-            <app-tile class="tile" [tile]="tile"></app-tile>
+            <app-tile (mouseover)="selectedTile = tile.pos" (mouseleave)="selectedTile = {x: 0, y: 0}" class="tile" [tile]="tile"></app-tile>
         </mat-grid-tile>
     </div>
 </mat-grid-list>

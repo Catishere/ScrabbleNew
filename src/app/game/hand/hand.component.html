@@ -1,4 +1,10 @@
-<div class="hand">
-    <app-letter [letter]="testletter"></app-letter>
+<div cdkDropList 
+    class="hand"
+    [cdkDropListData]="testletters"
+    cdkDropListOrientation="horizontal" 
+    (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let letter of testletters">
+        <app-letter class="letter" [letter]="letter" cdkDrag></app-letter>
+    </div>
 </div>
 

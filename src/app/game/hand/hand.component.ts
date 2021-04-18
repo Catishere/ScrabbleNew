@@ -1,5 +1,7 @@
+import { LetterTransferService } from './../services/letter-transfer.service';
 import { LetterModel } from './../models/letter-model';
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-hand',
@@ -8,14 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HandComponent implements OnInit {
 
-  public testletter: LetterModel;
-  constructor() {
-    this.testletter = new LetterModel();
+  public testletters: LetterModel[];
+
+  constructor(private lss: LetterTransferService) {
+    this.testletters = [];
   }
 
   ngOnInit(): void {
-    this.testletter.letter = "B";
-    this.testletter.points = 2;
+    this.testletters.push({letter: "B", points: 2});
+    this.testletters.push({letter: "A", points: 1});
+    this.testletters.push({letter: "Q", points: 8});
+  }
+
+  drop(event: CdkDragDrop<LetterModel[]>) {
+    this.lss.drop(event);
   }
 
 }

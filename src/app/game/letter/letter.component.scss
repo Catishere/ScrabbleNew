@@ -1,0 +1,35 @@
+.background {
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    user-select: none;
+}
+
+.hover:hover {
+    background-color: rgb(168, 133, 87);
+    transition: background-color 0.2s;
+}
+
+.indent {
+    width: 30%;
+}
+
+.letter {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    width: 45%;
+}
+
+.points {
+    align-self: flex-end;
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+.points div {
+    font-size: 50%;
+}

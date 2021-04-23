@@ -3,12 +3,12 @@
     <mat-grid-list *ngFor="let tilerow of tiles; index as i" gutterSize="0px" cols="15" rowHeight="1:1">
         <div *ngFor="let tile of tilerow; index as j">
             <mat-grid-tile cdkDropList
-                [cdkDropListData]="placeholders[i * 15 + j]"
+                [cdkDropListData]="placeholders[i][j]"
                 [cdkDropListAutoScrollDisabled]="true"
                 (cdkDropListDropped)="drop($event)">
                 <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
                 <app-tile class="tile" [tile]="tile"></app-tile>
-                <app-letter class="tile boardletter" *ngIf="placeholders[i * 15 + j] && placeholders[i * 15 + j][0]" [letter]="placeholders[i * 15 + j][0]" cdkDrag></app-letter>
+                <app-letter class="tile boardletter" *ngIf="placeholders[i][j][0]" [letter]="placeholders[i][j][0]" cdkDrag></app-letter>
             </mat-grid-tile>
         </div>
     </mat-grid-list>

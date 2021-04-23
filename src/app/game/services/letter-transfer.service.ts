@@ -17,7 +17,7 @@ export class LetterTransferService {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      if (event.container.id !=  "cdk-drop-list-0" 
+      if (event.container.id != "cdk-drop-list-0"
           && event.container.data.length == 1) {
         transferArrayItem(event.previousContainer.data,
                           event.container.data,

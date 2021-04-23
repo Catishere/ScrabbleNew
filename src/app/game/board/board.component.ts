@@ -4,8 +4,10 @@ import { TileModel } from '../models/tile-model';
 import { Component, OnInit } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import TilesConfig from '../board.config.json'
+import Dictionary from '../../../assets/dictionary_compact.json'
 import { TileType } from '../tile/tile-type.enum';
 import { Point, moveItemInArray, transferArrayItem, CdkDragDrop } from '@angular/cdk/drag-drop';
+import Position from '../models/interfaces/Position.type';
 
 @Component({
   selector: 'app-board',
@@ -15,15 +17,20 @@ import { Point, moveItemInArray, transferArrayItem, CdkDragDrop } from '@angular
 export class BoardComponent implements OnInit {
 
   public tiles: TileModel[][];
-  public placeholders: LetterModel[][];
+  public placeholders: LetterModel[][][];
   public letters: LetterModel[];
+  public currentWord: Position<LetterModel>[];
 
   constructor(private lss: LetterTransferService) {
     this.letters = [];
     this.placeholders = [];
+    this.currentWord = [];
 
-    for (let i = 0; i < 224; i++) {
+    for (let i = 0; i < 15; i++) {
       this.placeholders[i] = [];
+      for (let j = 0; j < 15; j++) {
+        this.placeholders[i][j] = [];
+      }
     }
     
     this.tiles = TilesConfig.board.map((row, i) => {
@@ -33,16 +40,14 @@ export class BoardComponent implements OnInit {
     }) as TileModel[][];
   }
 
-  ngOnInit(): void { 
-    this.letters.push({letter: "B", points: 2});
-    this.letters.push({letter: "A", points: 1});
-    this.letters.push({letter: "Q", points: 8});
-    this.letters.push({letter: "Q", points: 8});
-    this.letters.push({letter: "Q", points: 8});
-    this.letters.push({letter: "Q", points: 8});
+  ngOnInit(): void {
+  }
+
+  checkWord = () => {
   }
 
   drop(event: CdkDragDrop<LetterModel[]>) {
+
     this.lss.drop(event);
   }
 }

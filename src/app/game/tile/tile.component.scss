@@ -1,21 +1,27 @@
 .DW {
-    background-color: palevioletred;
+    background-image: url(../../../assets/dw.svg);
+    background-size: cover;
 }
 .TW {
-    background-color: red;
+    background-image: url(../../../assets/tw.svg);
+    background-size: cover;
 }
 .DL {
-    background-color: lightblue;
+    background-image: url(../../../assets/dl.svg);
+    background-size: cover;
 }
 .TL {
-    background-color: darkblue;
+    background-image: url(../../../assets/tl.svg);
+    background-size: cover;
     color: white;
 }
 .NM {
-    background-color: darkgreen;
+    background-image: url(../../../assets/em.svg);
+    background-size: cover;
 }
 
 .tile {
+    position: absolute;
     margin: 0;
     height: 100%;
     width: 100%;
@@ -26,6 +32,9 @@
     text-align: center;
     user-select: none;
     justify-content: center;
-    border: green;
-    border-style: solid;
+}
+
+.tile:hover { 
+    opacity: .5;
+    -webkit-filter: grayscale(20%) sepia(20%); 
 }

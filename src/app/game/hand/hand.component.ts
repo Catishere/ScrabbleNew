@@ -17,13 +17,15 @@ export class HandComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.testletters.push({letter: "B", points: 2});
-    this.testletters.push({letter: "A", points: 1});
-    this.testletters.push({letter: "Q", points: 8});
+    this.lss.letterEmitter.subscribe((letter) => {
+      if (this.testletters.length >= 7)
+        this.lss.letterDeclineEmitter.emit(letter);
+      else
+        this.testletters.push(letter);
+    })
   }
 
   drop(event: CdkDragDrop<LetterModel[]>) {
     this.lss.drop(event);
   }
-
 }

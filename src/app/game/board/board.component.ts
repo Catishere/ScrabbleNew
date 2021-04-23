@@ -15,12 +15,17 @@ import { Point, moveItemInArray, transferArrayItem, CdkDragDrop } from '@angular
 export class BoardComponent implements OnInit {
 
   public tiles: TileModel[][];
+  public placeholders: LetterModel[][];
   public letters: LetterModel[];
-  public selectedTile: Point;
 
   constructor(private lss: LetterTransferService) {
     this.letters = [];
-    this.selectedTile = {x: 0, y: 0};
+    this.placeholders = [];
+
+    for (let i = 0; i < 224; i++) {
+      this.placeholders[i] = [];
+    }
+    
     this.tiles = TilesConfig.board.map((row, i) => {
       return row.map((tile, j) => {
         return { type: tile as TileType, pos: {x: i, y: j}} as TileModel

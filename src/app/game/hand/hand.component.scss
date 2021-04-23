@@ -2,7 +2,7 @@
     background-color: green;
     display: flex;
     flex-direction: row;
-    height: 100px;
+    height: 60px;
     max-width: 100%;
     min-height: 60px;
     overflow: hidden;
@@ -12,6 +12,8 @@
   .letter {
     color: rgba(0, 0, 0, 0.87);
     margin: 5px;
+    height: 50px;
+    width: 50px;
     cursor: move;
     display: flex;
     justify-content: center;
@@ -45,14 +47,6 @@
     opacity: 0;
   }
   
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
   .letter:last-child {
     border: none;
-  }
-  
-  .hand.cdk-drop-list-dragging .letter:not(.cdk-drag-placeholder) {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }

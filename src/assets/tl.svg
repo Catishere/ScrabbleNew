@@ -1,0 +1,13 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <path stroke="#ffffff" id="svg_10" d="m51.39733,-3.13012l0,54.55963l-55.27517,-54.55963l55.27517,0z" stroke-opacity="null" stroke-dasharray="null" stroke-width="null" fill="#8484ff"/>
+  <path stroke="#ffffff" id="svg_8" d="m-0.84308,51.0315l0,-51.69749l52.05525,51.69749l-52.05525,0z" stroke-dasharray="null" stroke-width="null" fill="#3939d6"/>
+  <rect stroke="#000" id="svg_1" height="40" width="40" y="5" x="5" fill="#5656ff"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_2" y2="5.23331" x2="5.05443" y1="0.22456" x1="0.22457" fill-opacity="null" stroke-opacity="null" stroke-dasharray="null" stroke-width="null" stroke="#000" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_3" y2="5.05443" x2="45.12446" y1="0.22456" x1="49.77544" fill-opacity="null" stroke-opacity="null" stroke-dasharray="null" stroke-width="null" stroke="#000" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_4" y2="44.76668" x2="5.05443" y1="49.95432" x1="0.04568" fill-opacity="null" stroke-opacity="null" stroke-dasharray="null" stroke-width="null" stroke="#000" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_5" y2="44.94557" x2="45.12446" y1="49.77543" x1="49.95432" fill-opacity="null" stroke-opacity="null" stroke-dasharray="null" stroke-width="null" stroke="#000" fill="none"/>
+ </g>
+
+</svg>

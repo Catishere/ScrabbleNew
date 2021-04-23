@@ -1,7 +1,7 @@
-<div cdkDropList 
+<div cdkDropList
     class="hand"
     [cdkDropListData]="testletters"
-    cdkDropListOrientation="horizontal" 
+    [cdkDropListAutoScrollDisabled]="true"
     (cdkDropListDropped)="drop($event)">
     <div *ngFor="let letter of testletters">
         <app-letter class="letter" [letter]="letter" cdkDrag></app-letter>

@@ -1,4 +1,4 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, Point } from '@angular/cdk/drag-drop';
 import { EventEmitter, Injectable } from '@angular/core';
 import { LetterModel } from '../models/letter-model';
 
@@ -9,11 +9,16 @@ export class LetterTransferService {
 
   public letterEmitter = new EventEmitter<LetterModel>();
   public letterDeclineEmitter = new EventEmitter<LetterModel>();
+  public letterToHandEmitter = new EventEmitter<String>();
 
   constructor() { } 
+  
+  public listIdToPosition = (listId: String) => {
+    const id: number = parseInt(listId.split("-")[3]) - 1;
+    return {x: Math.floor(id / 15), y: id % 15 };
+  }
 
   public drop = (event: CdkDragDrop<LetterModel[]>) => {
-    console.log(event.container.id);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -29,6 +34,7 @@ export class LetterTransferService {
                           1,
                           0);
       } else {
+        this.letterToHandEmitter.emit(event.previousContainer.id);
         transferArrayItem(event.previousContainer.data,
           event.container.data,
           event.previousIndex,

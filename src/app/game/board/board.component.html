@@ -5,11 +5,21 @@
             <mat-grid-tile cdkDropList
                 [cdkDropListData]="placeholders[i][j]"
                 [cdkDropListAutoScrollDisabled]="true"
-                (cdkDropListDropped)="drop($event)">
+                (cdkDropListDropped)="drop($event, i, j)">
                 <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
                 <app-tile class="tile" [tile]="tile"></app-tile>
-                <app-letter class="tile boardletter" *ngIf="placeholders[i][j][0]" [letter]="placeholders[i][j][0]" cdkDrag></app-letter>
+                <app-letter
+                    class="tile boardletter" 
+                    *ngIf="placeholders[i][j][0]" 
+                    [letter]="placeholders[i][j][0]" 
+                    cdkDrag>
+                </app-letter>
             </mat-grid-tile>
         </div>
     </mat-grid-list>
+    <div class="flexbox">
+        <div (click)="checkWord()" style="height: 50px; width: 200px; background-color: yellow;">CHECK</div>
+        <app-message [correct]="correct"></app-message>
+    </div>
+    
 </div>

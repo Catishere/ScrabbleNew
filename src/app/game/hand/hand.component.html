@@ -2,6 +2,7 @@
     class="hand"
     cdkDropListOrientation="horizontal"
     [cdkDropListData]="testletters"
+    [cdkDropListSortingDisabled]="true"
     [cdkDropListAutoScrollDisabled]="true"
     (cdkDropListDropped)="drop($event)">
     <div *ngFor="let letter of testletters">

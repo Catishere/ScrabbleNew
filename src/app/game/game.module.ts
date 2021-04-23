@@ -7,6 +7,7 @@ import { TileComponent } from './tile/tile.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HandComponent } from './hand/hand.component';
+import { MessageComponent } from '../message/message.component';
 
 
 
@@ -16,7 +17,8 @@ import { HandComponent } from './hand/hand.component';
     TileComponent,
     LetterComponent,
     PileComponent,
-    HandComponent,],
+    HandComponent,
+    MessageComponent,],
   imports: [
     CommonModule,
     MatGridListModule,
@@ -27,7 +29,8 @@ import { HandComponent } from './hand/hand.component';
     TileComponent,
     LetterComponent,
     PileComponent,
-    HandComponent
+    HandComponent,
+    MessageComponent
   ]
 })
 export class GameModule { }

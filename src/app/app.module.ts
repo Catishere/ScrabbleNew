@@ -10,6 +10,7 @@ import { LetterComponent } from './game/letter/letter.component';
 import { PileComponent } from './game/pile/pile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [

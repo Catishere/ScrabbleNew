@@ -4,10 +4,9 @@ import { TileModel } from '../models/tile-model';
 import { Component, OnInit } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import TilesConfig from '../board.config.json'
-import Dictionary from '../../../assets/dictionary_compact.json'
+import Dictionary from '../../../assets/words.json';
 import { TileType } from '../tile/tile-type.enum';
 import { Point, moveItemInArray, transferArrayItem, CdkDragDrop } from '@angular/cdk/drag-drop';
-import Position from '../models/interfaces/Position.type';
 
 @Component({
   selector: 'app-board',
@@ -19,9 +18,11 @@ export class BoardComponent implements OnInit {
   public tiles: TileModel[][];
   public placeholders: LetterModel[][][];
   public letters: LetterModel[];
-  public currentWord: Position<LetterModel>[];
+  public currentWord: Point[];
+  public correct: boolean;
 
   constructor(private lss: LetterTransferService) {
+    this.correct = false;
     this.letters = [];
     this.placeholders = [];
     this.currentWord = [];
@@ -41,13 +42,49 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.lss.letterToHandEmitter.subscribe((id) => {
+      this.currentWord = this.currentWord.filter((letter) => {
+        return JSON.stringify(this.lss.listIdToPosition(id)) != JSON.stringify(letter);
+      });
+    })
   }
 
   checkWord = () => {
+    let isHorizontal = true;
+    let isVertical = true;
+
+    const first = this.currentWord[0];
+    this.currentWord.forEach((letter) => {
+      if (letter.x != first.x)
+        isHorizontal = false;
+      if (letter.y != first.y)
+        isVertical = false;
+    });
+
+    let word: string = "";
+    this.currentWord.sort((a, b) => {
+      if (isVertical)
+        return a.x - a.x;
+      else if (isHorizontal)
+        return a.y - b.y;
+      else
+        return 0;
+    });
+
+    this.currentWord.forEach((letterpos) => word = word + this.placeholders[letterpos.x][letterpos.y][0].letter);
+    word = word.toLowerCase();
+
+    this.correct = (isHorizontal || isVertical) && Dictionary.words.includes(word);
   }
 
-  drop(event: CdkDragDrop<LetterModel[]>) {
+  drop(event: CdkDragDrop<LetterModel[]>, x: number, y: number) {
+    const pos = this.lss.listIdToPosition(event.previousContainer.id);
+    this.currentWord = this.currentWord.filter((letter) => {
+      return JSON.stringify(letter) != JSON.stringify(pos);
+    });
+
+    this.currentWord.push({x, y});
 
     this.lss.drop(event);
-  }
+  }  
 }

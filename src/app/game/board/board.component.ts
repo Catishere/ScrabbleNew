@@ -78,12 +78,14 @@ export class BoardComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<LetterModel[]>, x: number, y: number) {
-    const pos = this.lss.listIdToPosition(event.previousContainer.id);
-    this.currentWord = this.currentWord.filter((letter) => {
-      return JSON.stringify(letter) != JSON.stringify(pos);
-    });
-
-    this.currentWord.push({x, y});
+    if (event.container.data.length == 0) {
+      const pos = this.lss.listIdToPosition(event.previousContainer.id);
+      this.currentWord = this.currentWord.filter((letter) => {
+        return JSON.stringify(letter) != JSON.stringify(pos);
+      });
+  
+      this.currentWord.push({x, y});
+    }
 
     this.lss.drop(event);
   }  
